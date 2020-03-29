@@ -2,6 +2,10 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -11,6 +15,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="tip_racuna")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @NamedQuery(name="TipRacuna.findAll", query="SELECT t FROM TipRacuna t")
 public class TipRacuna implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +32,7 @@ public class TipRacuna implements Serializable {
 	private String oznaka;
 
 	//bi-directional many-to-one association to Racun
+	@JsonIgnore
 	@OneToMany(mappedBy="tipRacuna")
 	private List<Racun> racuns;
 
