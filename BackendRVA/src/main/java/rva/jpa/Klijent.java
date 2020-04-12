@@ -2,6 +2,10 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -9,13 +13,14 @@ import java.util.List;
  * The persistent class for the klijent database table.
  * 
  */
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 @NamedQuery(name="Klijent.findAll", query="SELECT k FROM Klijent k")
 public class Klijent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="KLIJENT_ID_GENERATOR", sequenceName="KLIJENT_SEQ")
+	@SequenceGenerator(name="KLIJENT_ID_GENERATOR", sequenceName="KLIJENT_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KLIJENT_ID_GENERATOR")
 	private Integer id;
 
@@ -33,6 +38,7 @@ public class Klijent implements Serializable {
 
 	//bi-directional many-to-one association to Racun
 	@OneToMany(mappedBy="klijent")
+	@JsonIgnore
 	private List<Racun> racuns;
 
 	public Klijent() {

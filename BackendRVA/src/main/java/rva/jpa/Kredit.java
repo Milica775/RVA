@@ -21,7 +21,7 @@ public class Kredit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="KREDIT_ID_GENERATOR", sequenceName="KREDIT_SEQ")
+	@SequenceGenerator(name="KREDIT_ID_GENERATOR", sequenceName="KREDIT_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="KREDIT_ID_GENERATOR")
 	private Integer id;
 
