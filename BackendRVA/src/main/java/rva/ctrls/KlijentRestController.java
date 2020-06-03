@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import rva.repository.KlijentRepository;
 import rva.repository.KreditRepository;
 
 @RestController
+@CrossOrigin
 @Api(tags= {"Klijent CRUD operacije"})
 public class KlijentRestController {
 	
@@ -83,6 +85,7 @@ public class KlijentRestController {
 		klijentRepository.save(klijent);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
 	@DeleteMapping("klijent/{id}")
 	@ApiOperation(value="Briše klijenta iz baze podataka čija je id vrijednost proslijeđena kao path varijabla")
 	public ResponseEntity<Klijent> deleteKlijent(@PathVariable("id") Integer id){

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import rva.jpa.TipRacuna;
 import rva.repository.TipRacunaRepository;
 
 @RestController
+@CrossOrigin
 @Api(tags= {"Tip računa CRUD operacije"})
 public class TipRacunaRestController {
 	@Autowired
@@ -70,9 +72,9 @@ public class TipRacunaRestController {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		jdbcTemplate.execute("delete from racun where tip_racuna="+id);
 		tipRacunaRepository.deleteById(id);
-		if(id==-32)
+		if(id==5)
 		   jdbcTemplate.execute("INSERT INTO \"tip_racuna\" (\"id\",\"naziv\",\"opis\",\"oznaka\")"
-				   +"VALUES (-32,'devizni','Može se koristiti za prilive iz inostranstva','dev5') ");
+				   +"VALUES (5,'devizni','Može se koristiti za prilive iz inostranstva','dev5') ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

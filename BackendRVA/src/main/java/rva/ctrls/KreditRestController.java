@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import rva.jpa.Kredit;
 import rva.repository.KreditRepository;
 
 @RestController
+@CrossOrigin
 @Api(tags= {"Kredit CRUD operacije"})
 public class KreditRestController {
 	
@@ -71,9 +73,9 @@ public class KreditRestController {
 		if(!kreditRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		kreditRepository.deleteById(id);
-		if(id==8)
+		if(id==5)
 		   jdbcTemplate.execute("INSERT INTO \"kredit\" (\"id\",\"naziv\",\"opis\",\"oznaka\")"
-				   +"VALUES (8,'Studentski kredit','Kredit za plaćanje troškova upisa','studKredit8') ");
+				   +"VALUES (5,'Studentski kredit','Kredit za plaćanje troškova upisa','studKredit8') ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
