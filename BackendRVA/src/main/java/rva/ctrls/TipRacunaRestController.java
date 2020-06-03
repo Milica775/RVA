@@ -74,7 +74,7 @@ public class TipRacunaRestController {
 		tipRacunaRepository.deleteById(id);
 		if(id==5)
 		   jdbcTemplate.execute("INSERT INTO \"tip_racuna\" (\"id\",\"naziv\",\"opis\",\"oznaka\")"
-				   +"VALUES (5,'devizni','Može se koristiti za prilive iz inostranstva','dev5') ");
+				   +"VALUES (-32,'devizni','Može se koristiti za prilive iz inostranstva','dev5') ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -75,7 +75,7 @@ public class KreditRestController {
 		kreditRepository.deleteById(id);
 		if(id==5)
 		   jdbcTemplate.execute("INSERT INTO \"kredit\" (\"id\",\"naziv\",\"opis\",\"oznaka\")"
-				   +"VALUES (5,'Studentski kredit','Kredit za plaćanje troškova upisa','studKredit8') ");
+				   +"VALUES (8,'Studentski kredit','Kredit za plaćanje troškova upisa','studKredit8') ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

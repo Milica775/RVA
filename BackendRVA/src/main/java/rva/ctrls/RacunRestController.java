@@ -93,7 +93,7 @@ public class RacunRestController {
 	}
 	
 	@DeleteMapping("racun/{id}")
-	@ApiOperation(value="Briše račun iz baze podataka čija je id vrijednost proslijeđena kao path varijabla")
+	@ApiOperation(value="Briše račun iz baze podataka čija vrijednost id je proslijeđena kao path varijabla")
 	public ResponseEntity<Racun> deleteKlijent(@PathVariable("id") Integer id){
 		if(!racunRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

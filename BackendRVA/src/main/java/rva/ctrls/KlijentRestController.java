@@ -43,7 +43,7 @@ public class KlijentRestController {
 	}
 	
 	@GetMapping("klijent/{id}")
-	@ApiOperation(value="Vraća klijenta iz baze podataka čija je id vrijednost proslijeđena kao path varijabla")
+	@ApiOperation(value="Vraća klijenta iz baze podataka čija vrijednost id je proslijeđena kao path varijabla")
 	public Klijent getKlijent(@PathVariable("id") Integer id) {
 		return klijentRepository.getOne(id);
 	}
