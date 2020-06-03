@@ -1,8 +1,5 @@
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,11 +19,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './components/core/home/home.component';
-import { AboutComponent } from './components/core/about/about.component';
-import { AuthorComponent } from './components/core/author/author.component';
-import { HelpComponent } from './components/core/help/help.component';
 import { RacunComponent } from './components/racun/racun.component';
 import { KreditComponent } from './components/kredit/kredit.component';
 import { KlijentComponent } from './components/klijent/klijent.component';
@@ -35,6 +27,15 @@ import { KreditDialogComponent } from './components/dialogs/kredit-dialog/kredit
 import { KlijentDialogComponent } from './components/dialogs/klijent-dialog/klijent-dialog.component';
 import { RacunDialogComponent } from './components/dialogs/racun-dialog/racun-dialog.component';
 import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog/tip-racuna-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './components/core/home/home.component';
+import { AuthorComponent } from './components/core/author/author.component';
+import { AboutComponent } from './components/core/about/about.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppComponent } from './app.component';
+
+
 
 
 @NgModule({
@@ -42,7 +43,6 @@ import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog
     AppComponent,
     AboutComponent,
     AuthorComponent,
-    HelpComponent,
     RacunComponent,
     KreditComponent,
     KlijentComponent,
@@ -52,11 +52,12 @@ import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog
     KlijentDialogComponent,
     RacunDialogComponent,
     TipRacunaDialogComponent
+
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     MatButtonModule,
+    BrowserAnimationsModule,
     MatIconModule,
     MatSidenavModule,
     MatListModule,
@@ -78,7 +79,9 @@ import { TipRacunaDialogComponent } from './components/dialogs/tip-racuna-dialog
     FormsModule,
     AppRoutingModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
