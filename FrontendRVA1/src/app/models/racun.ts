@@ -6,6 +6,6 @@ export class Racun {
   naziv: string;
   oznaka: string;
   opis: string;
-  tip_racuna: TipRacuna;
+  tipRacuna: TipRacuna;
   klijent: Klijent;
 }

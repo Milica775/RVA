@@ -29,9 +29,6 @@ export class RacunDialogComponent implements OnInit {
       );
   }
 
-  compareTo(a, b) {
-    return a.id == b.id;
-  }
 
 
 

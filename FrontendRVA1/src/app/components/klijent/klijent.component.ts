@@ -14,7 +14,7 @@ import { KlijentDialogComponent } from '../dialogs/klijent-dialog/klijent-dialog
 })
 export class KlijentComponent implements OnInit {
 
-  displayedColumns=['id','ime','prezime','broj_lk','kredit','actions'];
+  displayedColumns=['id','ime','prezime','brojLk','kredit','actions'];
   dataSource: MatTableDataSource<Klijent>;
 
   @ViewChild(MatPaginator,{static:false}) paginator:MatPaginator;
@@ -54,9 +54,9 @@ export class KlijentComponent implements OnInit {
     });
   }
 
-  public openDialog(flag:number, id?: number, ime?:string,prezime?:string,broj_lk?:number,kredit?:number) {
+  public openDialog(flag:number, id?: number, ime?:string,prezime?:string,brojLk?:number,kredit?:number) {
     const dialogRef=this.dialog.open(KlijentDialogComponent,
-    {data: {id,ime,prezime,broj_lk,kredit}}
+    {data: {id,ime,prezime,brojLk,kredit}}
     );
 
     dialogRef.componentInstance.flag=flag;

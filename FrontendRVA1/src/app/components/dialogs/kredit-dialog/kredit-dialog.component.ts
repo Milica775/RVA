@@ -15,8 +15,8 @@ export class KreditDialogComponent implements OnInit {
   constructor(public kreditService:KreditService,
               public snackBar:MatSnackBar,
               public dialogRef:MatDialogRef<KreditDialogComponent>,
-              @Inject (MAT_DIALOG_DATA) public data: Kredit
-              ) { }
+              @Inject (MAT_DIALOG_DATA) public data: Kredit)
+               { }
 
   ngOnInit(): void {
   }

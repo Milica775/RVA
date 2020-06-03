@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RacunComponent implements OnInit,OnChanges {
 
-  displayedColumns=['id','naziv','oznaka','opis','tip_racuna','klijent','actions'];
+  displayedColumns=['id','naziv','oznaka','opis','tipRacuna','klijent','actions'];
   dataSource: MatTableDataSource<Racun>;
 
   @Input() selektovanTipRacuna:TipRacuna;
@@ -32,6 +32,7 @@ export class RacunComponent implements OnInit,OnChanges {
 
   ngOnChanges() {
     if (this.selektovanTipRacuna.id) {
+      console.log(this.selektovanTipRacuna.id);
       debugger;
       this.loadData();
     }
@@ -76,7 +77,7 @@ dialogRef.componentInstance.flag = flag;
 console.log(flag)
 if (flag === 1) {
   console.log(flag)
-dialogRef.componentInstance.data.tip_racuna = this.selektovanTipRacuna;
+dialogRef.componentInstance.data.tipRacuna = this.selektovanTipRacuna;
 console.log(flag)
 }
 

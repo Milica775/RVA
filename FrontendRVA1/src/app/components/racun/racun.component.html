@@ -34,7 +34,7 @@
       <mat-cell *matCellDef="let row"> {{ row.opis }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="tip_racuna">
+    <ng-container matColumnDef="tipRacuna">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Tip racuna</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{ row.tipRacuna.id }}</mat-cell>
     </ng-container>
@@ -53,10 +53,10 @@
   </mat-header-cell>
 
   <mat-cell *matCellDef="let row; let i = index">
-    <button mat-icon-button color="primary" (click)="openDialog(2,row.id,row.naziv,row.oznaka,row.opis,row.tip_racuna,row.klijent)" >
+    <button mat-icon-button color="primary" (click)="openDialog(2,row.id,row.naziv,row.oznaka,row.opis,row.tipRacuna,row.klijent)" >
       <mat-icon aria-label="Edit">edit</mat-icon>
     </button>
-    <button mat-icon-button color="primary" (click)="openDialog(2,row.id,row.naziv,row.oznaka,row.opis,row.tip_racuna,row.klijent)" >
+    <button mat-icon-button color="primary" (click)="openDialog(3,row.id,row.naziv,row.oznaka,row.opis,row.tipRacuna,row.klijent)" >
       <mat-icon aria-label="Delete">delete</mat-icon>
     </button>
   </mat-cell>

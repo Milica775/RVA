@@ -27,7 +27,7 @@ export class RacunService {
 }
 
 public addRacun(racun: Racun): void {
-
+     racun.id=0;
     this.httpClient.post(this.API_URL1, racun).subscribe();
 }
 

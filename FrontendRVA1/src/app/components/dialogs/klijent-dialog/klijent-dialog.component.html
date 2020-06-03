@@ -16,7 +16,7 @@
     </div>
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Broj lične karte" [(ngModel)]="data.broj_lk" name="broj_lk" [disabled]="flag == 3">
+        <input matInput placeholder="Broj lične karte" [(ngModel)]="data.brojLk" name="broj_lk" [disabled]="flag == 3">
       </mat-form-field>
     </div>
 
@@ -24,7 +24,7 @@
       <mat-form-field>
         <mat-select [(ngModel)]="data.kredit" placeholder="Kredit" name="kredit"  [disabled]="flag == 3">
           <mat-option *ngFor="let kredit of krediti" [value]="kredit">
-            {{ kredit.naziv }}
+            {{ kredit.id }}
           </mat-option>
         </mat-select>
       </mat-form-field>

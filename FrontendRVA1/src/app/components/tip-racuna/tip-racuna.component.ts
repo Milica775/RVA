@@ -16,7 +16,7 @@ import { TipRacunaDialogComponent } from '../dialogs/tip-racuna-dialog/tip-racun
 })
 export class TipRacunaComponent implements OnInit {
 
-  displayedColumns=['id','naziv','oznaka','opis','actions'];
+  displayedColumns=['id','naziv','opis','oznaka','actions'];
   dataSource: MatTableDataSource<TipRacuna>;
   selektovanTipRacuna:TipRacuna;
 
@@ -41,10 +41,11 @@ export class TipRacunaComponent implements OnInit {
   }
 
 
-  public openDialog(flag:number, id?: number,naziv?:string,oznaka?:string,opis?:string) {
+  public openDialog(flag:number, id?: number,naziv?:string,opis?:string,oznaka?:string) {
     const dialogRef=this.dialog.open(TipRacunaDialogComponent,
-    {data: {id,naziv,oznaka,opis}}
+    {data: {id,naziv,opis,oznaka}}
     );
+
 
     dialogRef.componentInstance.flag=flag;
 

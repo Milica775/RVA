@@ -23,7 +23,7 @@
     </div>
     <div class="form">
       <mat-form-field>
-        <mat-select [(ngModel)]="data.klijent" placeholder="Klijent" name="klijent" [compareWith]="compareTo" [disabled]="flag == 3">
+        <mat-select [(ngModel)]="data.klijent" placeholder="Klijent" name="klijent" [disabled]="flag == 3">
           <mat-option *ngFor="let klijent of klijenti" [value]="klijent">
             {{ klijent.id }}
           </mat-option>

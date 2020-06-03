@@ -1,10 +1,9 @@
-import { TipRacuna } from './../../../models/tipRacuna';
+
+import { TipRacuna } from 'src/app/models/tipRacuna';
 import { Component, OnInit, Inject } from '@angular/core';
-import { TipRacunaService } from 'src/app/services/tip-racuna.service';
+import { TipRacunaService } from './../../../services/tip-racuna.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { KreditDialogComponent } from '../kredit-dialog/kredit-dialog.component';
-import { Kredit } from 'src/app/models/kredit';
 
 @Component({
   selector: 'app-tip-racuna-dialog',
@@ -15,10 +14,10 @@ export class TipRacunaDialogComponent implements OnInit {
 
   public flag: number;
 
-  constructor(public tipRacunaService:TipRacunaService,
-    public snackBar:MatSnackBar,
+  constructor( public snackBar:MatSnackBar,
     public dialogRef:MatDialogRef<TipRacunaDialogComponent>,
-    @Inject (MAT_DIALOG_DATA) public data: TipRacuna) { }
+    @Inject (MAT_DIALOG_DATA) public data: TipRacuna,
+    public tipRacunaService:TipRacunaService){}
 
   ngOnInit(): void {
   }
