@@ -1,7 +1,6 @@
 import { TipRacuna } from './../../models/tipRacuna';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Kredit } from 'src/app/models/kredit';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { TipRacunaService } from 'src/app/services/tip-racuna.service';
