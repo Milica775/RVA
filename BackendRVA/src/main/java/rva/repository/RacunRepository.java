@@ -11,5 +11,5 @@ import rva.jpa.TipRacuna;
 public interface RacunRepository extends JpaRepository<Racun,Integer> {
 
 	Collection<Racun> findByTipRacuna(TipRacuna tipracuna);
-	Collection<Racun> findByKlijent(Klijent klijent);
+
 }

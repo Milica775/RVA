@@ -2,6 +2,8 @@ package rva.ctrls;
 
 import java.util.Collection;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,15 +69,20 @@ public class KreditRestController {
 		kreditRepository.save(kredit);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	
 	@DeleteMapping("kredit/{id}")
 	@ApiOperation(value="Briše kredit iz baze podataka čija je id vrijednost proslijeđena kao path varijabla")
 	public ResponseEntity<Kredit> deleteKredit(@PathVariable("id") Integer id){
 		if(!kreditRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		jdbcTemplate.execute(
+				"delete from racun where klijent in (select id from klijent where kredit = " + id
+						+ ");");
+		jdbcTemplate.execute("delete from klijent where kredit = " + id);
 		kreditRepository.deleteById(id);
-		if(id==5)
-		   jdbcTemplate.execute("INSERT INTO \"kredit\" (\"id\",\"naziv\",\"opis\",\"oznaka\")"
-				   +"VALUES (8,'Studentski kredit','Kredit za plaćanje troškova upisa','studKredit8') ");
+		if(id==1)
+		   jdbcTemplate.execute("INSERT INTO \"kredit\" (\"id\",\"naziv\",\"opis\",\"oznaka\") VALUES (1,'Studentski kredit','Kredit za plaćanje troškova upisa','studKredit8') ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

@@ -2,6 +2,8 @@ package rva.ctrls;
 
 import java.util.Collection;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,18 +57,6 @@ public class KlijentRestController {
 	}
 	
 
-	
-	@GetMapping("klijentiPoKredituId/{id}")
-	@ApiOperation(value="Vraća kolekciju svih klijenata iz baze podataka koji imaju kredit čija id vrijednost je proslijeđena kao path varijabla")
-
-	public Collection<Klijent> getKlijentiByKredit(@PathVariable("id") int id)
-	{
-		Kredit kredit= kreditRepository.getOne(id);
-		return klijentRepository.findByKredit(kredit);
-	}
-	
-	
-
 	@PostMapping("klijent")
 	@ApiOperation(value="Upisuje klijenta u bazu podataka")
 	public ResponseEntity<Klijent> insertKlijent(@RequestBody Klijent klijent){
@@ -86,15 +76,17 @@ public class KlijentRestController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	
 	@DeleteMapping("klijent/{id}")
 	@ApiOperation(value="Briše klijenta iz baze podataka čija je id vrijednost proslijeđena kao path varijabla")
 	public ResponseEntity<Klijent> deleteKlijent(@PathVariable("id") Integer id){
 		if(!klijentRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		jdbcTemplate.execute("delete from racun where klijent=" +id);
 		klijentRepository.deleteById(id);
-		if(id==10)
+		if(id==3)
 		   jdbcTemplate.execute("INSERT INTO \"klijent\" (\"id\",\"broj_lk\",\"ime\",\"prezime\",\"kredit\")"
-				   +"VALUES (10,'665338','Marko','Lukić',1) ");
+				   +"VALUES (3,'665338','Marko','Lukić',5) ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

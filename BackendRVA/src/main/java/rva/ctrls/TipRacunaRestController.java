@@ -2,6 +2,8 @@ package rva.ctrls;
 
 import java.util.Collection;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,15 +68,16 @@ public class TipRacunaRestController {
 		tipRacunaRepository.save(tipRacuna);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
 	@DeleteMapping("tipRacuna/{id}")
 	public ResponseEntity<TipRacuna> deleteTipRacuna(@PathVariable("id") Integer id){
 		if(!tipRacunaRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		jdbcTemplate.execute("delete from racun where tip_racuna="+id);
+		jdbcTemplate.execute("delete from racun where tip_racuna = " + id);
 		tipRacunaRepository.deleteById(id);
-		if(id==5)
+		if(id==1)
 		   jdbcTemplate.execute("INSERT INTO \"tip_racuna\" (\"id\",\"naziv\",\"opis\",\"oznaka\")"
-				   +"VALUES (-32,'devizni','Može se koristiti za prilive iz inostranstva','dev5') ");
+				   +"VALUES (1,'devizni','Može se koristiti za prilive iz inostranstva','dev5') ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

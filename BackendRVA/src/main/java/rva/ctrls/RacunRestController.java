@@ -2,6 +2,8 @@ package rva.ctrls;
 
 import java.util.Collection;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,14 +66,6 @@ public class RacunRestController {
 	
 	}
 	
-
-	@GetMapping("racuniPoKlijentId/{id}")
-	@ApiOperation(value="Vraća kolekciju svih računa iz baze podataka koje imaju klijenti čija id vrijednost je proslijeđena kao path varijabla")
-	public Collection<Racun> racuniPoKlijentId(@PathVariable("id") int id) {
-	    Klijent klijent=klijentRepository.getOne(id);
-	    return racunRepository.findByKlijent(klijent);
-	
-	}
 	
 	@PostMapping("racun")
 	@ApiOperation(value="Upisuje račun u bazu podataka")
@@ -92,15 +86,16 @@ public class RacunRestController {
 		return new ResponseEntity<Racun>(HttpStatus.OK);
 	}
 	
+
 	@DeleteMapping("racun/{id}")
 	@ApiOperation(value="Briše račun iz baze podataka čija vrijednost id je proslijeđena kao path varijabla")
 	public ResponseEntity<Racun> deleteKlijent(@PathVariable("id") Integer id){
 		if(!racunRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		racunRepository.deleteById(id);
-		if(id==8)
+		if(id==3)
 		   jdbcTemplate.execute("INSERT INTO \"racun\" (\"id\",\"naziv\",\"opis\",\"oznaka\",\"klijent\",\"tip_racuna\")"
-				   +"VALUES (8,'Studentski račun','Račun namjenjen studentima','studRac3',1,4) ");
+				   +"VALUES (3,'Studentski račun','Račun namjenjen studentima','studRac3',2,4) ");
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
